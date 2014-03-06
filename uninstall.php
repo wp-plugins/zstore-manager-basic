@@ -1,15 +1,15 @@
 <?php
 
-/*  Uninstall file for Zstore-Manager.   Deletes the tables from the database if the plugin is uninstalled and files deleted 
+/*  Uninstall file for Zstore-Manager-Basic.   Deletes the tables from the database if the plugin is uninstalled and files deleted 
 */
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
 	exit();
 
-function kwikthumbs_delete_plugin() {
-	delete_option( 'zstore_manager_settings' );
+function zmb_delete_plugin() {
+	delete_option( 'zstore_basic_manager_settings' );
 	
 }	
 
 
-kwikthumbs_delete_plugin() ;
+zmb_delete_plugin() ;
 ?>

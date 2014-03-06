@@ -3,7 +3,7 @@
 Plugin Name: zStore Manager  Basic
 Plugin URI: http://ikjweb.com
 Description: Manager for Zazzle Store Products.  Allows a Zazzle shopkeeper or Affliate to display Zazzle products on an external website.  You can display the product name, price and description and limit the amount of products shown.  You can also use the cache so that images load faster.  Visit the <a href="options-general.php?page=z_store_basic_slug">Settings Page</a> for more options. 
-Version: 1.0
+Version: 1.1
 Author: Ilene Johnson
 Author URI: http://ikjweb.com/
 Donate Link: http://ikjweb.com
@@ -89,8 +89,10 @@ class _Zazzle_Store_Manager_Basic
 			$zstore['cacheLifetime'] = "7200";
 			$zstore['use_customFeedUrl']="false";
 			$zstore['customFeedUrl'] = "";
+			$zstore['trackingCode']='';
 			$zstore['productType'][0]="All";
 			$zstore['productType'][1]='all';
+			
 	
 			
 			update_option('zstore_basic_manager_settings', $zstore);
@@ -214,11 +216,11 @@ class _Zazzle_Store_Manager_Basic
    
     }
 	function zstore_clear_cache(){
-			error_log('in clear cache');
+			
 			$cache = new cacheMgr_Zstore_Basic;
 	
 			$cache->clear_cache();
-			error_log('clear cache returns');
+			
 			
 		
 	
@@ -248,6 +250,8 @@ class _Zazzle_Store_Manager_Basic
 			
 		if( isset( $input['productLineId'] ) )
             $new_input['productLineId'] = sanitize_text_field( $input['productLineId'] );
+		if( isset( $input['trackingCode'] ) )
+            $new_input['trackingCode'] = sanitize_text_field( $input['trackingCode'] );
 			
 		
         $new_input['use_customFeedUrl'] = isset( $input['use_customFeedUrl'] )? 'true':'false';
@@ -271,9 +275,9 @@ class _Zazzle_Store_Manager_Basic
             $new_input['gridCellSize'] = $_POST['gridCellSize'] ;
 			
 			
-			
-		if(  $_POST['productType'] )
-            $new_input['productType'] = $this->productType[$_POST['productType']] ;
+		
+		
+        $new_input['productType'] = $this->productType[$_POST['productType']] ;
 		if(  $_POST['defaultSort'] )
             $new_input['defaultSort'] = $_POST['defaultSort'] ;
 			
@@ -447,7 +451,18 @@ class _Zazzle_Store_Manager_Basic
             array( $this, 'productLineId_cb' ), 
             'zstore-basic-setting-admin', 
             'user_info_settings'
-        );  
+        ); 
+
+
+		add_settings_field(
+            'trackingCode', 
+          __('Tracking Code:', 'zstore-manager-text-domain' ) ,
+            array( $this, 'trackingCode_cb' ), 
+            'zstore-basic-setting-admin', 
+            'user_info_settings'
+        ); 
+
+		
 		
 		
 		add_settings_field(
@@ -481,14 +496,14 @@ class _Zazzle_Store_Manager_Basic
             'user_info_settings', // Section     
 			array( 'label_for' => 'customFeedUrl' )			
         ); 
-		add_settings_field(
+	/*	add_settings_field(
             'clearCache', // ID
             '', // Title 
             array( $this, 'clearCache_cb' ), // Callback
             'zstore-basic-setting-admin', // Page
             'user_info_settings', // Section     
 			array( 'label_for' => 'clearCache' )			
-        );  		
+        );  */		
 			
 		
     }
@@ -723,6 +738,13 @@ class _Zazzle_Store_Manager_Basic
         printf(
             '<input type="text" id="productLineId" name="zstore_basic_manager_settings[productLineId]" value="%s" />',
             isset( $this->options['productLineId'] ) ? esc_attr( $this->options['productLineId']) : ''
+        );
+    }
+	public function trackingCode_cb()
+    {
+        printf(
+            '<input type="text" id="trackingCode" name="zstore_basic_manager_settings[trackingCode]" value="%s" />',
+            isset( $this->options['trackingCode'] ) ? esc_attr( $this->options['trackingCode']) : ''
         );
     }
 	
