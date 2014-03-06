@@ -5,7 +5,7 @@ Tags: zazzle, zstore, t-shirt product, POD
 Author: Ilene Johnson 
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 4.3
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,19 +41,29 @@ For instance, to add t-shirts this would be
 
 1. User and Store Information 
 2. Individual Page Information 
+3. View of Products
 
 == Changelog ==
+
+= 1.1 =
+
+* Added tracking code feature.   Puts tc=somecode in the link 
+* Fixed bug - show sorting and show paging were still appearing at the bottom even though that selection was unchecked in settings
+* Fixed problem with images appearing in a column in some templates.  
 
 = 1.0 =
 
 * First public release.
 
-
-
 == Upgrade Notice ==
+
+= 1.1 =
+
+Added tracking code feature. Fixed formatting issues that appeared on some templates where products would appear in one column
 
 = 1.0 =
 
+* First Public Release
 
 
 == To use via Shortcode ==
