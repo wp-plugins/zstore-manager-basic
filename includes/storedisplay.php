@@ -541,6 +541,7 @@ class _Zazzle_Store_Display_Basic
 		$y = '';
 
 		$defaults = get_option( 'zstore_basic_manager_settings' );
+
 		if ($defaults['productType'] == NULL)
 		{
 			$defaults['productType'][0]='All';
@@ -625,7 +626,7 @@ class _Zazzle_Store_Display_Basic
 		$gridCellBgColor=isset($this->options['gridCellBgColor'])?$this->options['gridCellBgColor']:"";
 		
 		$dataURLBase = $this->options['contributorHandle']!="" ? 'http://feed.'. ZAZZLE_BASIC_URL_BASE .'/'.$this->options['contributorHandle'].'/feed' : 'http://feed.'.ZAZZLE_BASIC_URL_BASE.'/feed';
- $feedUrl = $dataURLBase . '?'.$sortMethod.'&at='.$associateId.'&isz='.$gridCellSize.'&bg='.$gridCellBgColor.'&src=zstore&pg='.$startPage . $cg . '&ps='.$showHowMany.'&ft=gb&opensearch=true&qs='.$this->keywords.'&pt='.$productType;
+// $feedUrl = $dataURLBase . '?'.$sortMethod.'&at='.$associateId.'&isz='.$gridCellSize.'&bg='.$gridCellBgColor.'&src=zstore&pg='.$startPage . $cg . '&ps='.$showHowMany.'&ft=gb&opensearch=true&qs='.$this->keywords.'&pt='.$productType;
 
 		if ($this->options['use_customFeedUrl'] === 'false')
 		{
@@ -677,7 +678,7 @@ class _Zazzle_Store_Display_Basic
 							$artist = $value['artist'];
 							$specificProductType = htmlentities(str_replace("\"","",$value['g:product_type']));
 					
-							
+						
 						$nofollow = "rel=\"nofollow\"";  
 					
 						if (isset($this->options['associateId']))
@@ -685,8 +686,13 @@ class _Zazzle_Store_Display_Basic
 						else 
 							$associateIdParam = "";
 						$galleryUrl = "http://www.". ZAZZLE_BASIC_URL_BASE ."/".$artist.$associateIdParam;
+			
+						if (isset($this->options['trackingCode'] )){
 						
-					
+							$galleryUrl .="&tc=". $this->options['trackingCode'];
+							$link .="&tc=". $this->options['trackingCode'];
+						}
+			
 						if($this->options['showProductTitle']== 'true') {
 							$displaytitle = "<p><a href=\"$link\" style=width:".$gridCellSize ."px $nofollow class=\"z_productTitle\" title=\"$title\" >$title</a></p>";
 					
@@ -704,13 +710,14 @@ class _Zazzle_Store_Display_Basic
 						}
 						$imageSrc = $this->get_image_src($imageUrl,$cache);
 
-						$x = "<li id=itemid_".$id ." style=margin-right:" . $this->options['gridCellSpacing'] . "px;><a href="		. $link  . ' '   .  $nofollow . ">";
+						//$x = "<li id=itemid_".$id ." style=\"margin-right:" . $this->options['gridCellSpacing'] . "px;\"><a href="		. $link  . ' '   .  $nofollow . ">";
+						$x = "<li id=itemid_".$id ." style=\"margin-right:" . $this->options['gridCellSpacing'] . "px; width:".$gridCellSize ."px\"><a href="		. $link  . ' '   .  $nofollow . ">";
 						
-						$y = "<img src=\"" . $imageSrc . '"  alt=' . $title. ' title="" #' . 
+						$y = "<img src=\"" . $imageSrc . '"  alt=' . $title. ' title="" #' . $gridCellBgColor . ' ; /> ';
 					 
 						$id++;
-					
-						$gridCellBgColor . ' ; /> ';
+			
+						
 						$content .= $x;
 						$content .= $y; 
 						$content .="</a>";
@@ -734,9 +741,14 @@ class _Zazzle_Store_Display_Basic
 		}	
 					
 			$content.= "<p>";
-					$content.= $this->showsortingText;
-					$content.= $this->showpaginationText;
+				if ( ($this->options['showPagination'] || $this->options['showSorting'] ) && $this->options['use_customFeedUrl'] === 'false'){
+					if ($this->options['showSorting'] == 'true')
+						$content.= $this->showsortingText;
+					if ($this->options['showPagination'] == 'true')
+						$content.= $this->showpaginationText;
 					$content.= "</p>";
+				}
+					
 		  
 			} else {
 
