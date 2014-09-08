@@ -4,8 +4,8 @@ Donate link: http://ikjweb.com/
 Tags: zazzle, zstore, t-shirt product, POD
 Author: Ilene Johnson 
 Requires at least: 3.0.1
-Tested up to: 3.8
-Stable tag: 1.1
+Tested up to: 4.0
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,11 @@ For instance, to add t-shirts this would be
 3. View of Products
 
 == Changelog ==
+
+= 1.2 =
+*  Added Plugin Icon 
+*  Changed compatability to 4.0
+
 
 = 1.1 =
 
