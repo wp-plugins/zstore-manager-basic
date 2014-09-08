@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 require_once 'lastRSS.php';
 require_once 'cacheMgr.php';
