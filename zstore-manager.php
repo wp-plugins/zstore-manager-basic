@@ -90,6 +90,8 @@ class _Zazzle_Store_Manager_Basic
 			$zstore['use_customFeedUrl']="false";
 			$zstore['customFeedUrl'] = "";
 			$zstore['trackingCode']='';
+			$zstore['showZoom']="TRUE";
+			$zstore['newWindow']="false";
 			$zstore['productType'][0]="All";
 			$zstore['productType'][1]='all';
 			
@@ -123,9 +125,11 @@ class _Zazzle_Store_Manager_Basic
 	   wp_register_script( 'ZstoreBasicFormFieldsScript', plugins_url( 'js/form_fields.js', __FILE__ ) );
 	   wp_register_style( 'ZStoreBasicManagerStyleSheets', plugins_url('css/style.css', __FILE__) );
 		wp_register_script( 'ZstoreValidator', plugins_url( 'js/validate.js', __FILE__ ) );	
+		
 		 wp_enqueue_script( 'ZbasicstoreTabbedScript', plugins_url( 'js/tabbed.js', __FILE__ ) , array(), '1.0.0', true );
 		 wp_enqueue_script( 'ZstoreBasicFormFieldsScript', plugins_url( 'js/form_fields.js', __FILE__ ) , array('jquery'), '1.0.0', true );
 		 wp_enqueue_script( 'ZstoreValidator', plugins_url( 'js/validate.js', __FILE__ ) , array('jquery'), '1.0.0', true );
+		
 		wp_enqueue_style( 'ZStoreBasicManagerStyleSheets' );
 		wp_localize_script( 'ZstoreBasicFormFieldsScript', 'ajax_object',
 				array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'we_value' => 'zstore_clear_cache') );
@@ -182,8 +186,15 @@ class _Zazzle_Store_Manager_Basic
 			submit_button(); 
 			
 			?>
-			<b><a href="http://ikjweb.com/donate/">Please Donate</a> </b>
+			
+			
             </form>
+			
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input name="cmd" type="hidden" value="_s-xclick"  />
+				<input name="hosted_button_id" type="hidden" value="R5J9P464SC4HW" />
+				<input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image" />
+				<img src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0" />
+			</form>
         </div>
         <?php
     }
@@ -255,6 +266,8 @@ class _Zazzle_Store_Manager_Basic
 			
 		
         $new_input['use_customFeedUrl'] = isset( $input['use_customFeedUrl'] )? 'true':'false';
+        $new_input['showZoom'] = isset( $input['showZoom'] )? 'true':'false';
+        $new_input['newWindow'] = isset( $input['newWindow'] )? 'true':'false';
 		$new_input['showPagination'] = isset( $input['showPagination'] )? 'true':'false';
 	    $new_input['showSorting'] = isset( $input['showSorting'] )? 'true':'false';
 		
@@ -461,8 +474,24 @@ class _Zazzle_Store_Manager_Basic
             'zstore-basic-setting-admin', 
             'user_info_settings'
         ); 
-
 		
+		add_settings_field(
+            'newWindow', // ID
+            __('Open Product in New Window :','zstore-manager-text-domain' ) ,  // Title 
+            array( $this, 'newWindow_cb' ), // Callback
+            'zstore-basic-setting-admin', // Page
+            'user_info_settings', // Section     
+			array( 'label_for' => 'newWindow' )			
+        );  
+
+		add_settings_field(
+            'showZoom', // ID
+            __('Show Zoom:','zstore-manager-text-domain' ) ,  // Title 
+            array( $this, 'showZoom_cb' ), // Callback
+            'zstore-basic-setting-admin', // Page
+            'user_info_settings', // Section     
+			array( 'label_for' => 'showZoom' )			
+        );  
 		
 		
 		add_settings_field(
@@ -487,7 +516,8 @@ class _Zazzle_Store_Manager_Basic
             'zstore-basic-setting-admin', // Page
             'user_info_settings', // Section     
 			array( 'label_for' => 'use_customFeedUrl' )			
-        );  
+        ); 
+		
 		add_settings_field(
             'customFeedUrl', // ID
             __('Custom Feed Url:','zstore-manager-text-domain' ) ,  // Title 
@@ -656,6 +686,22 @@ class _Zazzle_Store_Manager_Basic
        <?php
 	}
 	
+	public function showZoom_cb()
+    {
+	
+	
+		?>
+		<input type="checkbox" id="showZoom"  name="zstore_basic_manager_settings[showZoom]" <?php echo  ($this->options['showZoom'] == 'true'?'checked': ""); ?> /> 
+       <?php
+	}
+	public function newWindow_cb()
+    {
+	
+	
+		?>
+		<input type="checkbox" id="newWindow"  name="zstore_basic_manager_settings[newWindow]" <?php echo  ($this->options['newWindow'] == 'true'?'checked': ""); ?> /> 
+       <?php
+	}
 	
 	public function showProductDescription_cb()
     {

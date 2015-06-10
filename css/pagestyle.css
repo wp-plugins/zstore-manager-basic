@@ -1,42 +1,86 @@
-ul.products li {
+
+.z_pagination_top{
+   margin-bottom: 30px !important;
+   text-align:left;
+ }
+ 
+ .z_pagination_bottom{
+   margin-top: 30px !important;
+   text-align:left;
+ }
+
+
+ul.z_products li {
    /* width: 200px;*/
     display: inline-block;
     vertical-align: top ;
 	text-decoration: none;
 	margin-bottom: 20px;
 	margin-left: 0px;
+
+
+
+
+
 	
 }
-ul.products{
+ul.z_products{
 
-margin: 0;
+
 
 }
-ul.products li a{
+ul.z_products li a{
 
 	    text-decoration: none;
 	
 }
 
-ul.products li  p {
+ul.z_products li  p {
 
 margin-top:0px;
 margin-bottom:0px !important;
 text-align: center;
+width: inherit !important;
+padding-bottom: 0 !important;
+
 }
 /* The pagination arrows (previous/next)*/
 	.paginationArrows {
 		text-decoration: none;
 	}
-.z_productTitle {
+.z_productTitle,.z_productDescription ,.z_productPrice,.z_productDescription{
 		display:block;
 		font-weight:bold;
 		text-align: center;
+		/*width: inherit !important;*/
 	}
+.z_productTitle{
+	line-height: 1.1em;
+	font-size:1em;
+}
+.z_productDescription{
+	font-size: .8em;
+	font-weight: normal;
+	line-height: 1.3em;
+
+}
+.z_productByline{
+font-size: .8em;
+	font-weight: normal;
+
+
+
+}
+.z_productPrice{
+
+	font-size: .6em;
+	font-weight: normal;
+
+
+}
 .z_content {
 display: block;
-  width: 210px;
-  height: 210px;
+  
   width: 100%;
   height: 100%;
  
@@ -49,7 +93,7 @@ display: block;
   -moz-box-sizing:border-box; /* Firefox */
   box-shadow:5px 5px lightgray;
 
-  
+  }
   h3 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #444; 
@@ -89,3 +133,20 @@ display: block;
 	* html .clearfix {height: 1%;}
 	.clearfix {display: block;}
 	/* End hide from IE-mac */
+	
+.zoomBox{
+
+	width:300px;
+	height:300px;
+	box-shadow: 0 0 5px #ddd;
+   
+	overflow: visible;
+	position: absolute;
+    text-align:center;
+    display: none;
+    min-height:300px;
+	top:0;
+	left:0;
+		z-index:9999999;
+
+}

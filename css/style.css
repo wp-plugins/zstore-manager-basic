@@ -9,6 +9,7 @@
 -webkit-column-count:2; /* Safari and Chrome */
 column-count:2;
 }
+
 .tabs li {
 	float: left;
 	list-style: none;
@@ -50,6 +51,7 @@ column-count:2;
 .panel p {
 	color: black;	
 }
+
 
 
 

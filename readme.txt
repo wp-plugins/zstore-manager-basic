@@ -4,8 +4,8 @@ Donate link: http://ikjweb.com/
 Tags: zazzle, zstore, t-shirt product, POD
 Author: Ilene Johnson 
 Requires at least: 3.0.1
-Tested up to: 4.0
-Stable tag: 1.1
+Tested up to: 4.2.2
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,10 +31,10 @@ for the cache and the custom url.
 = How do I add new products to the products list.  =
 
 open the producttype.csv file that is located in the root directory of the plugin.  Add 1 product per line in the following format: 
-	productname, zazzle_product_code. 
+	productname, zazzle_product_code such as 
 
-For instance, to add t-shirts this would be 
-	T-Shirts,zazzle_shirt.  
+For instance, to add Kids' t-shirts this would be 
+	Clothing | Kids | T-Shirts,252175184843195737  
 
 
 == Screenshots ==
@@ -45,9 +45,12 @@ For instance, to add t-shirts this would be
 
 == Changelog ==
 
-= 1.2 =
-*  Added Plugin Icon 
-*  Changed compatability to 4.0
+= 2.0 =
+
+* added zoom feature for products.  When mouse is over the product, it zooms in for a better look
+* updated products.csv
+* added option to open product in new window
+* fixed some issues with affiliate code not appearing in some links
 
 
 = 1.1 =
@@ -60,7 +63,16 @@ For instance, to add t-shirts this would be
 
 * First public release.
 
+
+
+
+
 == Upgrade Notice ==
+
+= 2.0 =
+
+added zoom feature for products, feature to open product in new window, fixed issues with affiliate code
+
 
 = 1.1 =
 
@@ -78,12 +90,11 @@ For shortcode documentation  [go to the website](http://ikjweb.com) .
 
 == Adding product types==
 
-Zazzle adds new products often and you will want them to show up in zStore Manager Basic.  To add a product to zStore Manager Basic, 
-open the producttype.csv file that is located in the root directory of the plugin.  Add 1 product per line in the following format: 
+Zazzle adds new products often and you will want them to show up in zStore Manager Basic.  To add a product to zStore Manager Basic, open the producttype.csv file that is located in the root directory of the plugin.  Add 1 product per line in the following format: 
 	productname, zazzle_product_code. 
 
-For instance, to add t-shirts this would be 
-	T-Shirts,zazzle_shirt.  
+For instance, to add kids' t-shirts this would be 
+	Clothing | Kids | T-Shirts,252175184843195737 
 
 
 
