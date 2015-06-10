@@ -3,7 +3,7 @@
 Plugin Name: zStore Manager  Basic
 Plugin URI: http://ikjweb.com
 Description: Manager for Zazzle Store Products.  Allows a Zazzle shopkeeper or Affliate to display Zazzle products on an external website.  You can display the product name, price and description and limit the amount of products shown.  You can also use the cache so that images load faster.  Visit the <a href="options-general.php?page=z_store_basic_slug">Settings Page</a> for more options. 
-Version: 1.1
+Version: 2.0
 Author: Ilene Johnson
 Author URI: http://ikjweb.com/
 Donate Link: http://ikjweb.com
