@@ -5,7 +5,7 @@ Tags: zazzle, zstore, t-shirt product, POD
 Author: Ilene Johnson 
 Requires at least: 3.0.1
 Tested up to: 4.2.2
-Stable tag: 2.1
+Stable tag: 2.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,7 +43,7 @@ For instance, to add Kids' t-shirts this would be
 2. Individual Page Information 
 3. View of Products4. Zoomed View of Product
 
-== Changelog ==
+== Changelog === 2.11 =*  Updated the producttypes.csv file
 = 2.1 =*  fixed issues with CSS overwriting theme CSS on certain attributes*  fixed update issue so that update does not clear out saved settings *  made all product display squares a uniform height *  recalculated height of product squares to accommodate different heights when user selects different features such as show description or show designer
 = 2.0 =
 
@@ -60,7 +60,7 @@ For instance, to add Kids' t-shirts this would be
 = 1.0 =
 
 * First public release.
-== Upgrade Notice ==
+== Upgrade Notice === 2.11 =updated the productypes.csv file 
 = 2.1 =fixed issues with CSS overwriting theme CSS on certain attributesfixed update issue so that update does not clear out saved settings made all product display squares a uniform height recalculated height of product squares to accommodate different heights when user selects different features such as show description or show designer
 = 2.0 =
 
